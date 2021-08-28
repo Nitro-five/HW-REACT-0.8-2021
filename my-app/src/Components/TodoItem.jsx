@@ -50,7 +50,7 @@ class TodoItem extends React.Component {
                         className="toggle"
                         type="checkbox"
                         checked={this.props.item.completed}
-                        onClick={() => {this.props.toggleTodo(this.props.item.id);}} />
+                        onChange={() => {this.props.toggleTodo(this.props.item.id);}} />
                     <label onDoubleClick={this.editHandler} > {this.props.item.title}</label>
                     <button className="destroy" onClick={() => this.props.deleteTodo(this.props.item.id)}></button>
                 </div>
