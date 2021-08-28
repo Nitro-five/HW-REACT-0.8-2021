@@ -24,7 +24,7 @@ class Header extends React.Component {
                     className="new-todo"
                     placeholder="What needs to be done?"
                     value={this.state.value}
-                    onChange={(e) => this.setState({value: e.target.value})}
+                    onChange={(e) => this.setState({value:e.target.value})}
                     onKeyPress={this.onKeyPress} />
 			</header>
         );

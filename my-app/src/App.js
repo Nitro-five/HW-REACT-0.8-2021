@@ -17,64 +17,56 @@ class App extends React.Component {
 
   createTodo = (title) => {
     this.setState({
-      todos: [
-        ...this.state.todos,
-         { id: Date.now(), title, completed: false }],
+      todos: [...this.state.todos, { id: Date.now(), title, completed: false }],
     });
   };
 
   toggleTodo = (id, title) => {
     this.setState({
       todos: this.state.todos.map((item) =>
-        item.id === id ? { ...item, title } :
-         item
- ),
+        item.id === id ? { ...item, title } : item
+      ),
     });
   };
 
   deleteTodo = (id) => {
     this.setState({
-      todos: this.state.todos.filter(
-        item =>item.id === id
-        )
-    }
-    );
+      todos: this.state.todos.filter((item) => item.id === id),
+    });
   };
 
   updateTitle = (id, title) => {
     this.setState({
       todos: this.state.todos.map((item) =>
-        item.id === id ?
-         { ...item, title } :
-          item
+        item.id === id ? { ...item, title } : item
       ),
     });
   };
 
- 
-
   updateFilter = (activeFilter) => {
     this.setState({
-     activeFilter
+      activeFilter,
     });
-  }
+  };
 
   render() {
     return (
       <section className="todoapp">
         <Header createTodo={this.createTodo} />
         <TodoList
-         todos={this.state.todos}
+          activeFilter={this.state.activeFilter}
+          todos={this.state.todos}
           toggleTodo={this.toggleTodo}
           deleteTodo={this.deleteTodo}
-          updateTitle={this.updateTitle} />
-          {
-            this.state.todos.length > 0 &&
-            <Footer 
+          updateTitle={this.updateTitle}
+        />
+        {this.state.todos.length > 0 && (
+          <Footer
+            todos={this.state.todos}
             activeFilter={this.state.activeFilter}
             updateFilter={this.updateFilter}
-            />
-          }
+          />
+        )}
       </section>
     );
   }
