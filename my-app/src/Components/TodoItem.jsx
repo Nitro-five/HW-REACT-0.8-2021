@@ -19,13 +19,13 @@ class TodoItem extends React.Component {
       this.setState({
          value: e.target.value
       });
+   }
       
    saveChanges = () => {
       this.setState({isEditing: false});
       this.props.updateTitle(this.props.item.id, this.state.value);
    }
-
-   }
+   
     render() {
       if(this.state.isEditing) {
          return(
